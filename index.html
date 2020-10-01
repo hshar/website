@@ -1,8 +1,55 @@
 <html>
 <head>
 <title> Intellipaat </title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="icon" type="image/png" href="images/github3.jpg">
+
 </head>
-<body style = "background-image:url('images/github3.jpg'); background-size: 100%">
-<h2 ALIGN=CENTER>Hello world!</h2>
+
+<body >
+       
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+    <div class="pb-5 pt-5">
+        <h1 style="color: rgb(16, 16, 110);font-size:3rem;font-family: 'Libre Franklin', sans-serif;text-shadow: 2px 2px #51d868;"><u>GIT GUIDE : </u></h1>
+    <h3 style="font-family:cursive">Git is a specific open-source version control system created by Linus Torvalds in 2005.
+
+        Specifically, Git is a distributed version control system, which means that the entire codebase and history is available on every developer’s computer, which allows for easy branching and merging.</h3>
+    </div>
+</div>
+<div class="col-md-4">
+    <div class="pb-4 pt-5">
+        
+    </div>
+    </div>
+    <div class="col-md-4 pt-5">
+        <main>
+            <div class="emojis">
+              <div class="emoji">😀</div>
+              <div class="emoji">😍</div>
+              <div class="emoji">😲</div>
+              <div class="emoji">😡</div>
+              <div class="emoji">💘</div>
+            </div>
+          </main>
+    </div>
+</div>
+</div>
+<script>
+    "use strict";
+document.querySelectorAll(".emoji").forEach(function (el) {
+  el.addEventListener("click", function () {
+    document.
+    querySelectorAll(".emoji.active").
+    forEach(function (active) {return active.classList.remove("active");});
+    requestAnimationFrame(function () {return el.classList.add("active");});
+  });
+});
+</script>
 </body>
 </html>

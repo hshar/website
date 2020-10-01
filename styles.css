@@ -1,0 +1,109 @@
+main {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.emojis {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  background-color: #ffffff;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.5rem 1.5rem 1rem 1.5rem;
+  border-radius: 4rem;
+  -webkit-box-shadow: 0 2px 12px 2px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 12px 2px rgba(0, 0, 0, 0.1);
+}
+
+.emojis .emoji {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  font-size: 2rem;
+  margin: 0 0.5rem;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.emojis .emoji.active {
+  -webkit-animation-name: emoji;
+          animation-name: emoji;
+  -webkit-animation-duration: 0.6s;
+          animation-duration: 0.6s;
+  -webkit-animation-direction: forwards;
+          animation-direction: forwards;
+  -webkit-animation-timing-function: ease-out;
+          animation-timing-function: ease-out;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+}
+
+.emojis .emoji:hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+}
+
+@-webkit-keyframes emoji {
+  5% {
+    -webkit-transform: translateY(1rem);
+            transform: translateY(1rem);
+  }
+  10% {
+    -webkit-transform: translateY(0) scale(1);
+            transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: translateY(-4rem) scale(1.5) rotateY(90deg);
+            transform: translateY(-4rem) scale(1.5) rotateY(90deg);
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(-8rem) scale(2) rotateY(180deg);
+            transform: translateY(-8rem) scale(2) rotateY(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes emoji {
+  5% {
+    -webkit-transform: translateY(1rem);
+            transform: translateY(1rem);
+  }
+  10% {
+    -webkit-transform: translateY(0) scale(1);
+            transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  50% {
+    -webkit-transform: translateY(-4rem) scale(1.5) rotateY(90deg);
+            transform: translateY(-4rem) scale(1.5) rotateY(90deg);
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(-8rem) scale(2) rotateY(180deg);
+            transform: translateY(-8rem) scale(2) rotateY(180deg);
+    opacity: 0;
+  }
+}
+/*# sourceMappingURL=styles.css.map */
