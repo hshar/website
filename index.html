@@ -2,7 +2,32 @@
 <head>
 <title> Intellipaat </title>
 </head>
-<body style = "background-image:url('images/github3.jpg'); background-size: 100%">
-<h2 ALIGN=CENTER>Hello world!</h2>
+<style>
+.hello{
+    font-size: 253%;
+    color:black;
+    animation-duration: 1s; 
+    animation-fill-mode: both; 
+    margin-top:5%
+}
+@keyframes bounce {
+   0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+   40% {transform: translateY(-30px);} 
+   60% {transform: translateY(-15px);} 
+} 
+.bounce { 
+            -webkit-animation-name: bounce; 
+            animation-name: bounce; 
+         }
+body{
+    background-image:linear-gradient(
+    rgba(20,20,20, .2), 
+    rgba(20,20,20, .2)),
+    url('images/github3.jpg');
+    background-size: 100%;
+}
+</style>
+<body >
+<h2 ALIGN=CENTER class="hello bounce">Hello world!</h2>
 </body>
 </html>
