@@ -1,12 +1,5 @@
 
-FROM ubuntu
-
-RUN apt-get update
-
-RUN DEBIAN_FRONTEND="noninteractive" apt-get -y install tzdata
-
-RUN apt-get install -y apache2 
-
+FROM snarayan112218/dockerfilerebuild:v1
 
 RUN rm /var/www/html/index.html
 
