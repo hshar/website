@@ -13,6 +13,12 @@ pipeline {
                 build 'Testurl'
             }
         }
+    stages {
+        stage('hub-push') {
+            steps {
+                build 'dockerpush2'
+            }
+        }
         stage('Prod') {
             when {
                 branch 'master' 
