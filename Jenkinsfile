@@ -13,7 +13,6 @@ pipeline {
                 build 'Testurl'
             }
         }
-    stages {
         stage('hub-push') {
             steps {
                 build 'dockerpush2'
