@@ -15,10 +15,10 @@ pipeline {
         }
         stage('hub-push') {
             steps {
-                build 'dockerpush2'
+                build 'DockerPush'
             }
         }
-        stage('Prod') {
+        stage('K8s-Deploy-Prod') {
             when {
                 branch 'master' 
             }
