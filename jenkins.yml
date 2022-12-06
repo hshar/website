@@ -1,0 +1,21 @@
+---
+- hosts: Master
+  become: true
+  tasks:
+
+  - name: Install Jenkins and Java
+    apt:
+     name:
+       - openjdk-11-jre-headless
+     state: latest
+  - name: Running a script
+    script: install.sh
+
+- hosts: slaves
+  become: true
+  tasks:
+  - name: install java package (Ubuntu)
+    apt:
+     name:
+       - openjdk-11-jre-headless
+     state: latest
