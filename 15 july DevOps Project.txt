@@ -1,0 +1,41 @@
+(capstoneproj-install.yaml)
+---
+- hosts: localhost
+  become: true
+  name: install jenkins, java and Docker
+  tasks:
+  - name: master task
+    script: jenkins.sh
+- hosts: test
+  become: true
+  name: install java and Docker
+  tasks:
+  - name: test task
+    script: docker.sh
+- hosts: prod
+  become: true
+  name: install java and Docker
+  tasks:
+  - name: prod task
+    script: docker.sh
+---------------------------------------------------
+
+(docker.sh)
+
+sudo apt-get update
+sudo apt-get install openjdk-11-jdk -y
+sudo apt-get install docker.io -y
+
+-----------------------------
+(jenkins.sh)
+
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install curl -y
+sudo apt-get install openjdk-11-jdk -y
+sudo apt-get install docker.io -y 
+sudo apt-get install jenkins -y
