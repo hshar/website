@@ -3,4 +3,4 @@ hello
 hi
 Executing the build step in Sritest fordocker
 sudo docker build /home/ubuntu/jenkins/workspace/job1 -t developapp
-sudo docker run -it 81:80 developapp
+sudo docker run -it -d 81:80 developapp
