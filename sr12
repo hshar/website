@@ -6,6 +6,6 @@ sudo docker build /home/ubuntu/jenkins/workspace/job1 -t developapp
 sudo docker run -it -d 81:80 developapp
 
 In the previous setup docker image creation error occurred due to -d changing build setup
-using -p instead of -d
-sudo docker build /home/ubuntu/jenkins/workspace/job1 -t developapp
+using -p instead of -d and also the workspace directory for jobone in it is sritestjob-1
+sudo docker build /home/ubuntu/jenkins/workspace/sritestjob-1 -t developapp
 sudo docker run -it -p 81:80 developapp
