@@ -4,3 +4,8 @@ hi
 Executing the build step in Sritest fordocker
 sudo docker build /home/ubuntu/jenkins/workspace/job1 -t developapp
 sudo docker run -it -d 81:80 developapp
+
+In the previous setup docker image creation error occurred due to -d changing build setup
+using -p instead of -d
+sudo docker build /home/ubuntu/jenkins/workspace/job1 -t developapp
+sudo docker run -it -p 81:80 developapp
