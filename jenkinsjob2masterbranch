@@ -1,4 +1,4 @@
-#Create Jenkins job2 (you can copy from job1 and make changes for git branch specifier and description)
+#Create Jenkins job2 (you can copy from job1 and make changes for git branch specifier and description, dockerbuild port is 82 to avoid conflict with test environment)
 #description: This a project to execute the job2 in Sritest using git hubwebhooks and using Master branch
 #git hub project:https://github.com/andhukuri/Capstone.git/
 #rescrict where this project can run: sritest
