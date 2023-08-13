@@ -10,4 +10,4 @@ sudo docker rm -f $(sudo docker ps -a -q)
 # Create the Docker image
 sudo docker build /home/ubuntu/jenkins/workspace/sritestjob2 -t masterapp
 # Run the Docker image in a container
-sudo docker run -itd -p 81:80 masterapp
+sudo docker run -itd -p 82:80 masterapp
