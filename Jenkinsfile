@@ -35,7 +35,7 @@ pipeline{
         stage(" Build docker image " ){
             steps{
                 script{
-                    sh  'docker build -f Dockerfile --tag vtong24/devstone:${VERSION} .'
+                    sh  'docker build -f Dockerfile --tag vtong24/devstone1:latest .'
                 }
             }    
         }
@@ -44,8 +44,8 @@ pipeline{
                 script{
                     withCredentials([string(credentialsId: 'DOCKER_HUB_P', variable: 'DOCKER_HUB_P')]) {
                         sh  'docker login -u vtong24 -p ${DOCKER_HUB_P}'
-                        sh  'docker push vtong24/devstone:${VERSION}'
-                        sh  'docker rmi vtong24/devstone:${VERSION}'
+                        sh  'docker push vtong24/devstone1:latest'
+                        sh  'docker rmi vtong24/devstone1:latest'
 
                     }
                 }
@@ -57,6 +57,6 @@ pipeline{
                         sh 'kubectl apply -f deployment-svc.yaml --kubeconfig=/var/lib/jenkins/kconfig'
                 }
             }
-        } 
+        }
     }
 }
