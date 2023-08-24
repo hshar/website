@@ -5,11 +5,7 @@ pipeline{
     }
     stages{
         stage(" code compile "){
-            agent {
-                docker {
-                    image 'ubuntu:latest'
-                }
-            }
+            agent any
             steps{
                  echo 'Successful code compile'
             }
