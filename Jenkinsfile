@@ -11,21 +11,13 @@ pipeline{
             }
         }
         stage(" code review "){
-            agent {
-                docker {
-                    image 'ubuntu:latest'
-                }
-            }
+            agent any
             steps{
                  echo 'Successful code review'
             }
         }
         stage(" code unit test "){
-            agent {
-                docker {
-                    image 'ubuntu:latest'
-                }
-            }
+            agent any
             steps{
                  echo 'Successful code unit'
             }
