@@ -20,13 +20,13 @@ pipeline{
                  echo 'Successful code quality check'
             }
         }
-        stage(" code review "){
+        stage(" code unit test "){
             agent any
             steps{
                  echo 'Successful code review'
             }
         }
-        stage(" code unit test "){
+        stage(" code coverage "){
             agent any
             steps{
                  echo 'Successful code unit'
