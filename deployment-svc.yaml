@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: devstone
-        image: vtong24/devstone:latest
+        image: vtong24/devstone:12
         ports:
         - containerPort: 80
 
