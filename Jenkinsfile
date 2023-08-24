@@ -10,6 +10,16 @@ pipeline{
                  echo 'Successful code compile'
             }
         }
+        stage(" code quality check "){
+            agent {
+                docker {
+                    image 'ubuntu:latest'
+                }
+            }
+            steps{
+                 echo 'Successful code quality check'
+            }
+        }
         stage(" code review "){
             agent any
             steps{
