@@ -51,6 +51,12 @@ pipeline{
                 }
             }
         }
-        
+        stage('Deploying devstone on k8s cluster') {
+            steps {
+                script{
+                        sh 'kubectl apply -f deployment-svc.yaml --kubeconfig=/var/lib/jenkins/kconfig'
+                }
+            }
+        } 
     }
 }
