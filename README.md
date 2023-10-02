@@ -59,7 +59,7 @@ sudo docker run -it -d -p 81:80 developapp
 Or we can change port number and App name  or delete current container image
 
 Prod
-ntu@ip-172-31-21-92:~/jenkins/workspace/job3$ history
+
     1  sudo apt update
     2  cd .ssh
     3  ls
