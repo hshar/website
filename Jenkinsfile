@@ -10,10 +10,19 @@ pipeline {
                 expression { currentBuild.getTimeInMillis() < getTimestampFor25thOfTheMonth() }
             }
             steps {
-                // Add your deployment steps here
-                // For example:
-                sh 'echo "Deploying the application"'
-                sh 'kubectl apply -f deployment.yaml'
+                script {
+                    // Ensure kubectl is configured properly with credentials
+                    def kubectl = sh(script: 'which kubectl', returnStatus: true).trim()
+                    if (kubectl != 0) {
+                        error("kubectl is not found or not properly configured.")
+                    }
+
+                    // Apply the Kubernetes deployment
+                    def deployResult = sh(script: 'kubectl apply -f deployment.yaml', returnStatus: true)
+                    if (deployResult != 0) {
+                        error("Failed to deploy the application.")
+                    }
+                }
             }
         }
     }
