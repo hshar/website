@@ -17,11 +17,12 @@ pipeline {
                         error("kubectl is not found or not properly configured.")
                     }
 
-                    // Apply the Kubernetes deployment
-                    def deployResult = sh(script: 'kubectl apply -f deployment.yaml', returnStatus: true)
-                    if (deployResult != 0) {
-                        error("Failed to deploy the application.")
-                    }
+                    // Define your deployment steps here
+                    sh 'echo "Deploying the application..."'
+                    
+                    // Replace 'kubectl apply -f deployment.yaml' with your actual deployment command.
+                    // Example:
+                    sh 'kubectl apply -f /home/ubuntu/website-Fork'
                 }
             }
         }
