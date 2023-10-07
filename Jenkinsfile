@@ -22,7 +22,7 @@ pipeline {
                     
                     // Replace 'kubectl apply -f deployment.yaml' with your actual deployment command.
                     // Example:
-                    sh 'kubectl apply -f /home/ubuntu/website-Fork'
+                    sh 'kubectl apply -f /deplayment.yml'
                 }
             }
         }
