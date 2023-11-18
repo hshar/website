@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: capstoneproject2
+  labels:
+    app: apacheapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: apacheapp
+  template:
+    metadata:
+      labels:
+        app: apacheapp
+    spec:
+      containers:
+      - name: capstoneproject-apache
+        image: ameldocker98/images:project2
+        ports:
+        - containerPort: 80
