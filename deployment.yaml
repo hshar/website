@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: capstoneproject-apache
-        image: ameldocker98/images:project2
+        image: ameldocker98/images:project2:latest
         ports:
         - containerPort: 80
