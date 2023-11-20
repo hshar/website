@@ -1,2 +1,2 @@
-FROM ubuntu/apache
+FROM hshar/webapp
 COPY . /var/www/html
