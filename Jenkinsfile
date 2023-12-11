@@ -1,5 +1,5 @@
 pipeline {
-  agent {test}
+  agent {label 'test'}
 
   stages {
     stage('Pull Source') {
