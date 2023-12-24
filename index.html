@@ -1,9 +1,115 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title> Intellipaat </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Apache Webpage</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #0066cc;
+            margin: 0 10px;
+        }
+        section {
+            padding: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
-<body style = "background-image:url('images/github3.jpg'); background-size: 100%">
-<h2 ALIGN=CENTER>Hello world!</h2>
-<h3>ALIGN=CENTER>Hello Everyone</h3> 
+<body>
+
+    <header>
+        <h1>Enhanced Apache Webpage</h1>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="home">
+        <h2>Welcome to our Enhanced Website!</h2>
+        <p>This webpage features a responsive design, a gallery section, and an interactive element. Explore the various sections and features.</p>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We are a creative and innovative team dedicated to providing high-quality web solutions.</p>
+    </section>
+
+    <section id="gallery">
+        <h2>Image Gallery</h2>
+        <div class="gallery">
+            <img src="images/github3.jpg" alt="Image 1">
+            <img src="images/ideaimage.jpg" alt="Image 2">
+            <img src="images/success.jpg" alt="Image 3">
+            <!-- Add more images as needed -->
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form action="/submit" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <footer>
+        &copy; 2023 Enhanced Apache Webpage. All rights reserved.
+    </footer>
+
+    <script>
+        // Interactive Feature Example
+        const welcomeMessage = document.querySelector("#home h2");
+        welcomeMessage.addEventListener("click", function() {
+            alert("Thanks for clicking! This is an interactive feature.");
+        });
+    </script>
+
 </body>
 </html>
