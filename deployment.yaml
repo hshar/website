@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: myprtcontainer
-        image: ameldocker98/vault:imagev1
+        image: ameldocker98/vault:imagev2
         ports:
         - containerPort: 80
