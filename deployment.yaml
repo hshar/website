@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: PRT-deployment
+  name: prt-deployment
   labels:
-    app: PRTAPP01
+    app: prtapp01
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: PRTAPP01
+      app: prtapp01
   template:
     metadata:
       labels:
-        app: PRTAPP01
+        app: prtapp01
     spec:
       containers:
-      - name: mypj2container
+      - name: myprtcontainer
         image: ameldocker98/vault:imagev1
         ports:
         - containerPort: 80
