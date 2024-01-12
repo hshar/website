@@ -2,4 +2,5 @@ FROM ubuntu:latest
 RUN apt-get update
 RUN apt-get install -y apache2
 COPY . /var/www/html
-cmd ['apachectl' '-D' 'FOREGROUND']
+
+CMD ["apachectl", "-D", "FOREGROUND"]
