@@ -1,0 +1,56 @@
+pipeline {
+    agent any
+    environment {
+        // Define environment variables if needed
+        DOCKER_IMAGE = 'hshar/webapp'
+        CONTAINER_NAME = 'webapp_container'
+    }
+    // As I am using the the same repo where the jenkinsfile. So, no need
+    // stages {
+    //     stage('Clone repository') {
+    //         steps {
+    //            git branch: 'status_auto', credentialsId: 'github.key', url: 'git@github.com:punchh/pipeline-devops.git'
+
+    //         }
+        }
+        stage('Build Docker image') {
+            steps {
+                script {
+                    // Build the Docker image from the Dockerfile in your repo
+                    docker.build("$DOCKER_IMAGE")
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    // Run tests inside the Docker container
+                    // Assuming you have a script to run tests
+                    docker.run("--name $CONTAINER_NAME $DOCKER_IMAGE", "./run-tests.sh").inside {
+                        // Execute tests or other commands
+                    }
+                }
+            }
+        }
+        stage('Deploy to Prod') {
+            when {
+                branch 'master'
+            }
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'test-docker-credentials-id') {
+                        docker.image("${DOCKER_IMAGE}").push('latest')
+                    }
+                    // Add your deployment script here
+                }
+            }
+        }
+    }
+    post {
+        always {
+            // Clean up after the pipeline execution
+            cleanWs()
+            docker.rm("$CONTAINER_NAME", force: true)
+        }
+    }
+}
