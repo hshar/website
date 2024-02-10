@@ -49,7 +49,11 @@ pipeline {
         always {
             // Clean up after the pipeline execution
             cleanWs()
-            docker.rm("$CONTAINER_NAME", force: true)
+            script {
+                // Wrap the Docker cleanup in a script block
+                sh "docker stop ${CONTAINER_NAME} || true"
+                sh "docker rm ${CONTAINER_NAME} || true"
+            }
         }
     }
 }
