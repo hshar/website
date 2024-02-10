@@ -1,0 +1,59 @@
+pipeline {
+    agent any
+    environment {
+        // Define environment variables if needed
+        DOCKER_IMAGE = 'hshar/webapp'
+        CONTAINER_NAME = 'webapp_container'
+    }
+    // As I am using the the same repo where the jenkinsfile. So, no need
+    stages {
+    //     stage('Clone repository') {
+    //         steps {
+    //            git branch: 'status_auto', credentialsId: 'github.key', url: 'git@github.com:punchh/pipeline-devops.git'
+
+    //         }
+    //    }
+        stage('Build Docker image') {
+            steps {
+                script {
+                    // Build the Docker image from the Dockerfile in your repo
+                    docker.build("$DOCKER_IMAGE")
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                script {
+                    // Run tests inside the Docker container
+                    docker.run("--name $CONTAINER_NAME $DOCKER_IMAGE", "./run-tests.sh")
+                }
+            }
+        }
+        stage('Deploy to Prod') {
+            when {
+                branch 'master'
+            }
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', 'test-docker-credentials-id') {
+                        docker.image("${DOCKER_IMAGE}").push('latest')
+                    }
+                    // withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-credentials-id']]) {
+                    //     sh "aws ecs update-service --service demo-umesh --cluster cluster-demo --force-new-deployment"
+                    // }
+                }
+            }
+        }
+    }
+    post {
+        always {
+            // Clean up after the pipeline execution
+            cleanWs()
+            script {
+                // Wrap the Docker cleanup in a script block
+                sh "docker stop ${CONTAINER_NAME} || true"
+                sh "docker rm ${CONTAINER_NAME} || true"
+            }
+        }
+    }
+}
