@@ -1,5 +1,5 @@
 pipeline {
-    agent Prod
+    agent any
     environment {
         DOCKER_IMAGE = "arun1818/jenkins-casestudy:latest"
     }
