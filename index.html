@@ -1,8 +1,795 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title> Intellipaat </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Central</title>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --accent: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        nav {
+            background-color: var(--dark);
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        main {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+            cursor: pointer;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card p {
+            color: #555;
+        }
+        
+        .demo-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 3rem 0;
+        }
+        
+        .chat-container {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .chat-messages {
+            flex-grow: 1;
+            padding: 1rem;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+        
+        .message {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+        
+        .user-message {
+            background-color: var(--primary);
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+        
+        .ai-message {
+            background-color: #e0e0e0;
+            align-self: flex-start;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 0.8rem;
+            background-color: white;
+            border-top: 1px solid #ddd;
+        }
+        
+        .chat-input input {
+            flex-grow: 1;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-right: 0.8rem;
+        }
+        
+        .chat-input button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .chat-input button:hover {
+            background-color: #2980b9;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin: 4rem 0;
+            padding: 3rem;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            border-radius: 8px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Login Page Styles */
+        .login-container {
+            max-width: 400px;
+            margin: 4rem auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .login-button:hover {
+            background-color: #2980b9;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .forgot-password a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .register-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        .login-social {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .login-social p {
+            margin-bottom: 1rem;
+            color: #777;
+            position: relative;
+        }
+
+        .login-social p::before,
+        .login-social p::after {
+            content: "";
+            display: inline-block;
+            width: 30%;
+            height: 1px;
+            background-color: #ddd;
+            vertical-align: middle;
+            margin: 0 10px;
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .social-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f5f5f5;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .social-button:hover {
+            transform: translateY(-3px);
+            background-color: #e0e0e0;
+        }
+        
+        /* Pages */
+        .page {
+            display: none;
+        }
+        
+        .active-page {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+            
+            .login-container {
+                margin: 2rem 1rem;
+            }
+        }
+    </style>
 </head>
-<body style = "background-image:url('images/github3.jpg'); background-size: 100%">
-<h2 ALIGN=CENTER>Hello world!</h2>
+<body>
+    <header>
+        <div class="particles" id="particles-js"></div>
+        <h1>AI Central</h1>
+        <p>Exploring the Future of Artificial Intelligence</p>
+    </header>
+    
+    <nav>
+        <a href="#" class="nav-link" data-page="home">Home</a>
+        <a href="#" class="nav-link" data-page="features">Features</a>
+        <a href="#" class="nav-link" data-page="demo">Try AI</a>
+        <a href="#" class="nav-link" data-page="about">About</a>
+        <a href="#" class="nav-link" data-page="login">Login</a>
+        <a href="#" class="nav-link" data-page="contact">Contact</a>
+    </nav>
+    
+    <!-- Home Page -->
+    <main id="home-page" class="page active-page">
+        <section id="features">
+            <h2>Discover AI Capabilities</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Natural Language Processing</h3>
+                    <p>Experience advanced language understanding and generation for seamless human-computer interaction.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Computer Vision</h3>
+                    <p>Explore AI systems that can interpret, analyze, and understand visual information from the world.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Machine Learning</h3>
+                    <p>Learn about algorithms that improve automatically through experience and data collection.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="demo" class="demo-section">
+            <h2>Experience AI Chat</h2>
+            <p>Try our demonstration AI chatbot below:</p>
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message ai-message">
+                        Hello! I'm an AI assistant. How can I help you today?
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="user-input" placeholder="Type your message here...">
+                    <button id="send-button">Send</button>
+                </div>
+            </div>
+        </section>
+        
+        <section id="about">
+            <h2>About AI Central</h2>
+            <p>AI Central is a platform dedicated to exploring and explaining artificial intelligence technologies. Our mission is to make AI accessible and understandable to everyone, from beginners to experts.</p>
+            <p>Founded in 2025, we've been at the forefront of AI education and exploration, helping individuals and businesses understand the potential of artificial intelligence.</p>
+        </section>
+        
+        <section class="cta-section">
+            <h2>Ready to Explore More?</h2>
+            <p>Join our community to get the latest updates on AI advancements and exclusive content.</p>
+            <a href="#" class="cta-button nav-link" data-page="login">Get Started</a>
+        </section>
+    </main>
+    
+    <!-- Login Page -->
+    <main id="login-page" class="page">
+        <div class="login-container">
+            <h2>Login to AI Central</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="login-button">Sign In</button>
+                <div class="forgot-password">
+                    <a href="#">Forgot your password?</a>
+                </div>
+            </form>
+            <div class="login-social">
+                <p>Or sign in with</p>
+                <div class="social-buttons">
+                    <a href="#" class="social-button">G</a>
+                    <a href="#" class="social-button">f</a>
+                    <a href="#" class="social-button">in</a>
+                </div>
+            </div>
+            <div class="register-link">
+                <p>Don't have an account? <a href="#">Register now</a></p>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Features Page -->
+    <main id="features-page" class="page">
+        <h2>AI Features & Capabilities</h2>
+        <div class="features">
+            <div class="feature-card">
+                <h3>Natural Language Processing</h3>
+                <p>Experience advanced language understanding and generation for seamless human-computer interaction.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Computer Vision</h3>
+                <p>Explore AI systems that can interpret, analyze, and understand visual information from the world.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Machine Learning</h3>
+                <p>Learn about algorithms that improve automatically through experience and data collection.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Reinforcement Learning</h3>
+                <p>Discover how AI agents learn optimal behaviors through trial and error with reward-based feedback.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Generative AI</h3>
+                <p>Create original content including text, images, music, and more using advanced generative models.</p>
+            </div>
+            <div class="feature-card">
+                <h3>AI Ethics & Safety</h3>
+                <p>Explore responsible AI development and deployment principles for ethical and beneficial outcomes.</p>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Demo Page -->
+    <main id="demo-page" class="page">
+        <section class="demo-section">
+            <h2>Experience AI Chat</h2>
+            <p>Engage with our demonstration AI chatbot to see how natural language processing works in practice:</p>
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages-demo">
+                    <div class="message ai-message">
+                        Hello! I'm an AI assistant. How can I help you today?
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="user-input-demo" placeholder="Type your message here...">
+                    <button id="send-button-demo">Send</button>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- About Page -->
+    <main id="about-page" class="page">
+        <h2>About AI Central</h2>
+        <p>AI Central is a platform dedicated to exploring and explaining artificial intelligence technologies. Our mission is to make AI accessible and understandable to everyone, from beginners to experts.</p>
+        <p>Founded in 2025, we've been at the forefront of AI education and exploration, helping individuals and businesses understand the potential of artificial intelligence.</p>
+        <h3>Our Mission</h3>
+        <p>We strive to demystify AI technology and make it accessible to everyone. Through education, demonstration, and exploration, we're building a community that embraces the potential of artificial intelligence while understanding its limitations and ethical considerations.</p>
+        <h3>Our Team</h3>
+        <p>Our team consists of AI researchers, engineers, educators, and enthusiasts who are passionate about advancing AI understanding and applications. Together, we work to create resources that help people learn about and engage with AI technologies.</p>
+    </main>
+    
+    <!-- Contact Page -->
+    <main id="contact-page" class="page">
+        <h2>Contact Us</h2>
+        <p>Have questions or feedback? We'd love to hear from you!</p>
+        <div class="login-container">
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-email">Email Address</label>
+                    <input type="email" id="contact-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" style="width:100%; padding:0.8rem; border:1px solid #ddd; border-radius:4px;" required></textarea>
+                </div>
+                <button type="submit" class="login-button">Send Message</button>
+            </form>
+        </div>
+    </main>
+    
+    <footer id="contact">
+        <h3>AI Central</h3>
+        <p>Advancing AI Understanding for Everyone</p>
+        <div class="footer-links">
+            <a href="#" class="nav-link" data-page="home">Home</a>
+            <a href="#" class="nav-link" data-page="about">About Us</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#" class="nav-link" data-page="contact">Contact</a>
+        </div>
+        <p>&copy; 2025 AI Central. All rights reserved.</p>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        // Initialize particles.js
+        particlesJS('particles-js', {
+            particles: {
+                number: {
+                    value: 80,
+                    density: {
+                        enable: true,
+                        value_area: 800
+                    }
+                },
+                color: {
+                    value: '#ffffff'
+                },
+                shape: {
+                    type: 'circle',
+                },
+                opacity: {
+                    value: 0.5,
+                    random: false,
+                },
+                size: {
+                    value: 3,
+                    random: true,
+                },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: '#ffffff',
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: 'grab'
+                    },
+                    onclick: {
+                        enable: true,
+                        mode: 'push'
+                    },
+                    resize: true
+                },
+                modes: {
+                    grab: {
+                        distance: 140,
+                        line_linked: {
+                            opacity: 1
+                        }
+                    },
+                    push: {
+                        particles_nb: 4
+                    }
+                }
+            },
+            retina_detect: true
+        });
+        
+        // Page Navigation
+        const pages = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetPage = link.getAttribute('data-page');
+                
+                // Hide all pages
+                pages.forEach(page => {
+                    page.classList.remove('active-page');
+                });
+                
+                // Show target page
+                document.getElementById(`${targetPage}-page`).classList.add('active-page');
+                
+                // Scroll to top
+                window.scrollTo(0, 0);
+            });
+        });
+        
+        // Chat functionality for both chat instances
+        function setupChat(messagesId, inputId, buttonId) {
+            const chatMessages = document.getElementById(messagesId);
+            const userInput = document.getElementById(inputId);
+            const sendButton = document.getElementById(buttonId);
+            
+            // AI responses
+            const aiResponses = {
+                'hello': 'Hello! How can I assist you today?',
+                'hi': 'Hi there! What can I help you with?',
+                'how are you': 'I\'m functioning optimally, thank you for asking! How are you?',
+                'what is ai': 'Artificial Intelligence (AI) refers to systems that can perform tasks typically requiring human intelligence, such as learning, reasoning, problem-solving, and understanding natural language.',
+                'help': 'I can answer questions about AI, tell you about our services, or just chat! What would you like to know?',
+                'default': 'That\'s an interesting point. Would you like to know more about specific AI topics?'
+            };
+            
+            function addMessage(text, isUser) {
+                const message = document.createElement('div');
+                message.classList.add('message');
+                message.classList.add(isUser ? 'user-message' : 'ai-message');
+                message.textContent = text;
+                chatMessages.appendChild(message);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+            
+            function getAIResponse(userText) {
+                const lowerText = userText.toLowerCase();
+                
+                // Check for exact matches first
+                for (const [key, response] of Object.entries(aiResponses)) {
+                    if (lowerText.includes(key)) {
+                        return response;
+                    }
+                }
+                
+                // Check for some keywords
+                if (lowerText.includes('machine learning')) {
+                    return 'Machine learning is a subset of AI focusing on systems that can learn from data without being explicitly programmed.';
+                } else if (lowerText.includes('neural network')) {
+                    return 'Neural networks are computing systems inspired by the human brain\'s structure, designed to recognize patterns.';
+                } else if (lowerText.includes('thank')) {
+                    return 'You\'re welcome! Feel free to ask if you have more questions.';
+                }
+                
+                // Default response
+                return aiResponses.default;
+            }
+            
+            function handleSend() {
+                const text = userInput.value.trim();
+                if (text) {
+                    addMessage(text, true);
+                    userInput.value = '';
+                    
+                    // Simulate AI thinking
+                    setTimeout(() => {
+                        const response = getAIResponse(text);
+                        addMessage(response, false);
+                    }, 500);
+                }
+            }
+            
+            if (sendButton && userInput) {
+                sendButton.addEventListener('click', handleSend);
+                userInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        handleSend();
+                    }
+                });
+            }
+        }
+        
+        // Setup both chat instances
+        setupChat('chat-messages', 'user-input', 'send-button');
+        setupChat('chat-messages-demo', 'user-input-demo', 'send-button-demo');
+        
+        // Form submissions
+        const loginForm = document.getElementById('login-form');
+        if (loginForm) {
+            loginForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Login functionality would connect to a backend in a real application.');
+            });
+        }
+        
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you for your message! In a real application, this would be sent to our team.');
+            });
+        }
+        
+        // Feature card animation
+        const featureCards = document.querySelectorAll('.feature-card');
+        featureCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(-5px)';
+            });
+        });
+    </script>
 </body>
 </html>
