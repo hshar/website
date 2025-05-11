@@ -1,1 +1,2 @@
-let write about project here
+let write about project here 
+there are two branch in this repo
