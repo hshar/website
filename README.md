@@ -1,4 +1,1 @@
-let write about project here
-i am main branch
-more update
-bla bla bla
+readme file for both master and develop
