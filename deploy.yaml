@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mydeployment
+  labels:
+    app: apache2
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: apache2
+  template:
+    metadata:
+      labels:
+        app: apache2
+    spec:
+      containers:
+      - name: mydeplymentcont
+        image: reemar123/test:latest
+        ports:
+        - containerPort: 80
