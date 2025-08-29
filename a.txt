@@ -1,0 +1,5 @@
+<<<<<<< HEAD
+checking
+=======
+text feature
+>>>>>>> 961e796b7be2c779d3aa290074235e6929d758ae
