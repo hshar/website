@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: custom-deployment
+  labels:
+    app: custom
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: custom
+  template:
+    metadata:
+      labels:
+        app: custom
+    spec:
+      containers:
+        - name: custom
+          image: tanyabitaan/capstoneintellipaat
+          ports:
+            - containerPort: 80
