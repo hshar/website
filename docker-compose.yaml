@@ -1,0 +1,7 @@
+services:
+  web:
+    image: aslesha18/website
+    container_name: website-container
+    ports:
+      - "82:82"
+    restart: always
