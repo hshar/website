@@ -1,0 +1,33 @@
+name: Next.js CI (develop → master)
+
+on:
+  pull_request:
+    branches: [ "master" ]
+    types: [opened, synchronize, reopened]
+    # Only trigger if PR comes from develop branch
+    paths-ignore:
+      - "README.md"
+
+jobs:
+  build:
+    if: github.base_ref == 'master' && github.head_ref == 'develop'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Next.js App
+        run: npm run build
+
+      - name: Run Tests (optional)
+        run: npm test
+        continue-on-error: true
