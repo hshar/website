@@ -1,0 +1,46 @@
+name: Next.js CI/CD
+
+on:
+  push:
+    branches: [ "master" ]  # use master branch
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1️⃣ Checkout the repo
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # 2️⃣ Setup Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 20
+
+    # 3️⃣ Install dependencies
+    - name: Install dependencies
+      run: npm install --legacy-peer-deps
+
+    # 4️⃣ Build Next.js project
+    - name: Build Next.js
+      run: npm run build
+
+    # 5️⃣ Deploy to your server via SSH
+    - name: Deploy via SSH
+      uses: appleboy/ssh-action@v0.1.9
+      with:
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.SERVER_USER }}
+        key: ${{ secrets.SERVER_SSH_KEY }}
+        port: 22
+        script: |
+          cd /var/www/rajeshmishrafrontend.xyz/nextjs/website
+          git reset --hard
+          git pull origin master
+          npm install --legacy-peer-deps
+          npm run build
+          pm2 restart nextjs-website
