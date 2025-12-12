@@ -38,7 +38,7 @@ jobs:
         key: ${{ secrets.SERVER_SSH_KEY }}
         port: 22
         script: |
-          cd /var/www/rajeshmishrafrontend.xyz/nextjs/website
+          cd /var/www/rajeshmishrafrontend.xyz/website
           git reset --hard
           git pull origin master
           npm install --legacy-peer-deps
