@@ -1,8 +1,115 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title> Intellipaat </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Software DevOps Project</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 40px;
+            background-color: #f4f7f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #0078D4;
+            text-align: center;
+        }
+        h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #0078D4;
+            padding-bottom: 5px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        .highlight {
+            color: #0078D4;
+            font-weight: bold;
+        }
+    </style>
 </head>
-<body style = "background-image:url('images/github3.jpg'); background-size: 100%">
-<h2 ALIGN=CENTER>Hello world!</h2>
+<body>
+
+<div class="container">
+
+    <h1>End-to-End DevOps CI/CD Pipeline Project</h1>
+
+    <p>
+        This project demonstrates the implementation of a complete
+        <span class="highlight">DevOps Lifecycle</span> for a web application
+        at <strong>Abode Software</strong> using industry-standard DevOps tools
+        and automation practices.
+    </p>
+
+    <h2>Project Objective</h2>
+
+    <p>
+        Automate software installation, source code management,
+        continuous integration, testing, containerization, and
+        production deployment using modern DevOps tools.
+    </p>
+
+    <h2>Technology Stack</h2>
+
+    <ul>
+        <li>Git & GitHub – Version Control</li>
+        <li>Ansible – Configuration Management</li>
+        <li>Jenkins – CI/CD Pipeline Automation</li>
+        <li>Docker – Containerization</li>
+        <li>Linux – Application Server</li>
+    </ul>
+
+    <h2>CI/CD Workflow</h2>
+
+    <ol>
+        <li>Provision servers using Ansible.</li>
+        <li>Developers push code to GitHub.</li>
+        <li>GitHub Webhooks automatically trigger Jenkins.</li>
+        <li>Jenkins clones the repository.</li>
+        <li>Docker image is built using the Dockerfile.</li>
+        <li>Application is tested automatically.</li>
+        <li>Develop branch performs Build + Test only.</li>
+        <li>Master branch performs Build + Test + Production Deployment.</li>
+    </ol>
+
+    <h2>Jenkins Pipeline</h2>
+
+    <ul>
+        <li><strong>Job 1:</strong> Build</li>
+        <li><strong>Job 2:</strong> Test</li>
+        <li><strong>Job 3:</strong> Production Deployment</li>
+    </ul>
+
+    <h2>Project Outcome</h2>
+
+    <p>
+        Successfully implemented an automated CI/CD pipeline that
+        reduced manual deployment effort, ensured consistent application
+        deployment, and enabled faster software delivery using
+        Infrastructure as Code and DevOps best practices.
+    </p>
+
+    <div class="footer">
+        <p>Developed as part of an End-to-End DevOps Lifecycle Implementation Project</p>
+    </div>
+
+</div>
+
 </body>
 </html>
