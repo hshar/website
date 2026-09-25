@@ -1,0 +1,51 @@
+---
+- name: Install Git
+  yum:
+    name: git
+    state: present
+ 
+- name: Install Java (required by Jenkins)
+  yum:
+    name: java-1.8.0-openjdk
+    state: present
+ 
+- name: Install Docker
+  yum:
+    name: docker
+    state: present
+ 
+- name: Start and enable Docker
+  service:
+    name: docker
+    state: started
+    enabled: yes
+ 
+- name: Add jenkins and ec2-user to the docker group
+  user:
+    name: "{{ item }}"
+    groups: docker
+    append: yes
+  loop:
+    - jenkins
+    - ec2-user
+ 
+- name: Add Jenkins repo
+  get_url:
+    url: https://pkg.jenkins.io/redhat-stable/jenkins.repo
+    dest: /etc/yum.repos.d/jenkins.repo
+ 
+- name: Import Jenkins GPG key
+  rpm_key:
+    state: present
+    key: https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+ 
+- name: Install Jenkins
+  yum:
+    name: jenkins
+    state: present
+ 
+- name: Start and enable Jenkins
+  service:
+    name: jenkins
+    state: started
+    enabled: yes

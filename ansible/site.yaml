@@ -1,0 +1,5 @@
+---
+- hosts: jenkins_node
+  become: yes
+  roles:
+    - common
